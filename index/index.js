@@ -6,19 +6,13 @@ let next =  document.querySelector(".nextBtn")
 
 prev.addEventListener("click", function() {
     if (translate > 0){
-        translate -= 33
-        if (translate == 1){
-            translate = 0
-        }
+        translate -= 25
         document.querySelector(".inner").style.transform = `translateX(${-translate}%)`;
     }
 });
 next.addEventListener("click", function(){
-    if (translate < 66){
-        translate += 33
-        if (translate == 99){
-            translate = 100
-        }
+    if (translate < 75){
+        translate += 25
         document.querySelector(".inner").style.transform = `translateX(${-translate}%)`;
     }
 })
