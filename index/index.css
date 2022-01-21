@@ -81,14 +81,6 @@ img {       /* Store Logo */
     /*----- HEADER SECTIION END -----*/
     /*----- MAIN SECTIION -----*/
 
-.mainPartOne{
-    background-color: indigo;
-* {
-  margin: 0 auto;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .mainPartOne {
   background-color: indigo;
 }
