@@ -1,11 +1,85 @@
 
-*{
-    margin: 0;
+* {
     padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+    /*----- HEADER SECTIION -----*/
+.d-flex {       /* Header */
+    background-color: black;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0.5em;
+    color: white;
 }
 
+.left-nav, .right-nav {       /* Headers' both parts as a row direction with basis */
+    display: flex;
+    flex-flow: row wrap;
+    flex-basis: 50%;
+    flex-grow: 1;
+}
 
+.left-nav {       /* Headers' first part */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items:baseline;
+}
 
+img {       /* Store Logo */
+    display: inline-block;
+    vertical-align:middle;
+    width: 100px;
+    margin-left: 2em;
+}
+
+.left-nav ul {       /* Headers' first part list */
+    display: inline-flex;
+    list-style-type: none;
+    padding: 1em;
+}
+
+.left-nav ul li {
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+
+.right-nav {        /* Headers' second part */
+    justify-content: flex-end;
+    align-items:flex-start;
+}
+
+.right-nav > ul:nth-child(1) {        /* Headers' second part first child-list */
+    display: flex;
+    list-style-type: none;
+    margin: 0 5em;
+}
+
+.right-nav ul li {
+    border: 2px solid rgb(83, 83, 83);
+    border-radius: 20px;
+    padding: 0.8em;
+    margin: 0.1em;
+    font-size: 1em;
+}
+
+.right-nav ul li:hover {
+    background-color: #dfa63c25;
+    cursor: pointer;
+}
+
+.right-nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.lang-menu {         /* Headers' second part second child-dropdown */
+    display: none;
+    list-style-type: none;
+}
+    /*----- HEADER SECTIION END -----*/
+    /*----- MAIN SECTIION -----*/
 
 .mainPartOne{
     background-color: indigo;
