@@ -158,6 +158,9 @@ img {       /* Store Logo */
   background-color: var(--button-bg);
   color: var(--button-text);
   border: none;
+  margin: 2px;
+  padding: 5px;
+  text-decoration: none;
 }
 
 .log-in-btn:hover {
