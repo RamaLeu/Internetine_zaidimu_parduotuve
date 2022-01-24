@@ -1,11 +1,11 @@
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-    /*----- HEADER SECTIION -----*/
-.d-flex {       /* Header */
+/*----- HEADER SECTIION -----*/
+.d-flex {
+  /* Header */
   background-color: black;
   display: flex;
   flex-flow: row wrap;
@@ -13,26 +13,31 @@
   color: white;
 }
 
-.left-nav, .right-nav {       /* Headers' both parts as a row direction with basis */
+.left-nav,
+.right-nav {
+  /* Headers' both parts as a row direction with basis */
   display: flex;
   flex-flow: row wrap;
   flex-basis: 50%;
   flex-grow: 1;
 }
 
-.left-nav {       /* Headers' first part */
+.left-nav {
+  /* Headers' first part */
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  align-items:center;
+  align-items: center;
 }
 
-.store-logo {       /* Store Logo */
+.store-logo {
+  /* Store Logo */
   width: 30px;
   margin-left: 5em;
 }
 
-.left-nav ul {       /* Headers' first part list */
+.left-nav ul {
+  /* Headers' first part list */
   display: inline-flex;
   list-style-type: none;
   padding: 1em;
@@ -43,12 +48,14 @@
   font-size: 1.2em;
 }
 
-.right-nav {        /* Headers' second part */
+.right-nav {
+  /* Headers' second part */
   justify-content: flex-end;
-  align-items:flex-start;
+  align-items: flex-start;
 }
 
-.right-nav > ul:nth-child(1) {        /* Headers' second part first child-list */
+.right-nav > ul:nth-child(1) {
+  /* Headers' second part first child-list */
   display: flex;
   list-style-type: none;
   margin: 0 5em;
@@ -68,7 +75,8 @@
   cursor: pointer;
 }
 
-.right-nav a , .left-nav a {
+.right-nav a,
+.left-nav a {
   text-decoration: none;
   color: white;
 }
@@ -85,15 +93,13 @@
   text-align: center;
 }
 
-.right-nav > ul li:hover > .language-menu{
+.right-nav > ul li:hover > .language-menu {
   display: block;
 }
 
 /* Headers' second part second child-dropdown */
-    /*----- HEADER SECTIION END -----*/
-    /*----- MAIN SECTIION -----*/
-
-
+/*----- HEADER SECTIION END -----*/
+/*----- MAIN SECTIION -----*/
 
 /* ! ---------Section 4 properties--------  */
 
@@ -135,11 +141,13 @@
 
 .item-1-top-h1 {
   margin-top: 0.5em;
+  background-color: var(--section-background);
 }
 
 .item-1-top-p,
 .item-2-bottom-p {
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .item-1-top,
@@ -184,24 +192,23 @@
   text-decoration: none;
 }
 
-
 /*----- FOOTER -----*/
 
-.mainFooter{
+.mainFooter {
   background-color: rgb(99, 98, 98);
   height: 230px;
 }
-.FAQ{
+.FAQ {
   background-color: lightgray;
   margin: 0 250px;
   padding-bottom: 3px;
 }
-.FAQ p{
-padding-left: 10px;
-font-weight: bold;
+.FAQ p {
+  padding-left: 10px;
+  font-weight: bold;
 }
 
-h1{
+h1 {
   background-color: rgb(177, 173, 173);
   text-align: center;
   font-size: 24px;
@@ -220,19 +227,19 @@ img {
   border-radius: 50%;
   margin-left: 30px;
 }
-.logo-end{
+.logo-end {
   padding-top: 50px;
   height: 100px;
 }
 
-.endFooter{
+.endFooter {
   text-align: center;
   margin-right: 200px;
   margin-left: 200px;
-  font-size: 15px
+  font-size: 15px;
 }
-.logo{
-float: left;
-padding-left: 150px;
-padding-bottom: 50px;
+.logo {
+  float: left;
+  padding-left: 150px;
+  padding-bottom: 50px;
 }
