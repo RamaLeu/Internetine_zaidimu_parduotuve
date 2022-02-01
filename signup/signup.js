@@ -115,7 +115,3 @@ function checkIfEmpty(err, value){
         return true;
     }
 }
-
-function register(dataArr){
-
-}

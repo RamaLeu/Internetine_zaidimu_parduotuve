@@ -20,11 +20,13 @@ header {
 
 main {
   background-color: var(--main-background);
+  width: 100%;
 }
 
 .main-form {
   padding-top: 3em;
   padding-bottom: 3em;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,6 +48,7 @@ main {
 .main-select {
   width: 17.7rem;
   height: 2.4rem;
+  padding-left: 10px;
 }
 
 .label-bottom {
@@ -71,7 +74,7 @@ select {
   filter: brightness(85%);
 }
 
-h3,
+.form-h3,
 label,
 button {
   color: var(--text);
@@ -83,13 +86,18 @@ select {
   border: none;
 }
 
-.a {
+.label-bottom {
+  width: 25%;
+  padding-left: 1.4em;
+}
+
+.bottom-links {
   color: var(--input-background);
   text-decoration: none;
   font-weight: bold;
 }
 
-.a:hover {
+.bottom-links:hover {
   color: black;
 }
 
