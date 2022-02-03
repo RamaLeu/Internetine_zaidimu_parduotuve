@@ -256,3 +256,14 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+
+
+/*  extra*/
+
+.d-none{
+  display: none;
+}
+.d-default{
+  display: block;
+}

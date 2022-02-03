@@ -1,64 +1,320 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword , onAuthStateChanged, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-auth.js";
+import { getDatabase, ref, set  } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js";
 
-let translate = 0
 
-let prev = document.querySelector(".prevBtn")
-let next =  document.querySelector(".nextBtn")
+const firebaseConfig = {
+apiKey: "AIzaSyDA9Ez4i7vSWvq8uzvmmy8CMQ54x-EDRfs",
+databaseURL: "https://derrastore-default-rtdb.europe-west1.firebasedatabase.app/",
+authDomain: "derrastore.firebaseapp.com",
+projectId: "derrastore",
+storageBucket: "derrastore.appspot.com",
+messagingSenderId: "70390486239",
+appId: "1:70390486239:web:f0e884d634f8114597856a"
+};
+
+let currentUser
+
+const app = initializeApp(firebaseConfig); 
+
+const db = getDatabase(app);
+
+
+
+
+
+const auth = getAuth();
+
+
+
+
+
+
+
+//register dalis 
+
+
+
+
+function writeUserData(data) {
+    const db = getDatabase();
+    set(ref(db, 'users/' + data.id), {
+      username: data.username,
+      admin: data.admin,
+      surname: data.surname,
+      email: data.email,
+      country: data.country,
+    });
+  }
+
+let userData = {
+    "id": 2,
+    "admin": true,
+    "username": "",
+    "surname": "",
+    "email": "",
+    "country": "",
+    "password": ""
+}
+
+
+function checkIfEmpty(err, value){
+    console.log(`Value is ${value}`)
+    if (value == "" /* || value == "----" */ || value == false){
+        console.log("WRONG");
+        errList.push(err)
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+
+//register dalies pabaiga
+//login dalis
+
+
+
+setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    return signInWithEmailAndPassword(auth, email, password);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
+onAuthStateChanged(auth, (user) => {
+if (user) {
+  const uid = user.uid;
+  console.log(uid)
+  currentUser = user 
+  document.querySelector('.regBtns').innerHTML = `<li>${currentUser.email}</li>
+  <a href="#" class="logoutNav"><li>LOGOUT</li></a>`;
+  document.querySelector('.logoutNav').addEventListener("click", function(e){
+    e.preventDefault()
+    logout()
+  });
+  // ...
+} else {
+  document.querySelector('.regBtns').innerHTML = `<a href="#" id="loginTag"><li>Login</li></a>
+  <a href="#" id="registerTag"><li>Sign up</li></a>`;
+  document.querySelector("#registerTag").addEventListener("click", function(){
+    switchPage(2);
+  });
+  document.querySelector("#loginTag").addEventListener("click", function(){
+    switchPage(1);
+  });
+}
+});
+
+
+
+function login(){
+  let email = document.querySelector("#log-email").value
+  let password = document.querySelector("#log-password").value
+
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    switchPage(0);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
+}
+
+function logout(){
+  signOut(auth).then(() => {
+    console.log("signed out")
+    currentUser = null
+  }).catch((error) => {
+    // An error happened.
+  });
+}
+
+function checkUser(){
+  if (currentUser){
+    const uid = currentUser.uid;
+    console.log(uid)
+    console.log(currentUser.email)
+    console.log(currentUser)
+  }
+
+}
+
+//login dalies pabaiga
+
+
+
+document.querySelector("#signInSubmit").addEventListener("click", function(e){
+  e.preventDefault()
+  login()
+})
+document.querySelector('#logout').addEventListener("click", function(e){
+e.preventDefault()
+logout()
+})
+
+document.querySelector('#checkUser').addEventListener("click", function(e){
+e.preventDefault()
+checkUser()
+})
+
+
+ 
+let errList = []
+let errs = document.querySelector(".errs");
+
+
+document.querySelector("#signUpSubmit").addEventListener("click", function(e){
+    e.preventDefault()
+    let result = true
+    document.querySelector(".errs").innerHTML = "";
+    result = checkIfEmpty("<p>Enter a username</p><br/>", document.querySelector("#reg-username").value)
+    result = checkIfEmpty("<p>Enter a surname</p><br/>", document.querySelector("#reg-surname").value)
+    result = checkIfEmpty("<p>Enter your email</p><br/>", document.querySelector("#reg-email").value)
+    result = checkIfEmpty("<p>Pick a country</p><br/>", document.querySelector("#reg-country").value)
+    result = checkIfEmpty("<p>Enter a password</p><br/>", document.querySelector("#reg-password").value)
+    result = checkIfEmpty("<p>Repeat your password</p><br/>", document.querySelector("#repeat-password").value)
+    result = checkIfEmpty("<p>You must agree to our privacy policy</p><br/>", document.querySelector("#agreement").checked)
+
+    if (document.querySelector("#reg-password").value == document.querySelector("#repeat-password").value){
+    }
+    else{
+        result = false;
+        errList.push("Passwords must match")
+    }
+
+    for (let item in errList){
+        errs.innerHTML += errList[item];
+    }
+    errList = []
+
+    console.log(result)
+
+    if (result){
+        userData.username = document.querySelector("#reg-username").value;
+        userData.surname = document.querySelector("#reg-surname").value;
+        userData.email = document.querySelector("#reg-email").value;
+        userData.country = document.querySelector("#reg-country").value;
+        userData.password = document.querySelector("#reg-password").value;
+        createUserWithEmailAndPassword(auth, userData.email, userData.password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            switchPage(0);
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+        });
+        writeUserData(userData) 
+    }
+    
+})
+
+
+
+
+
+let translate = 0;
+
+let prev = document.querySelector(".prevBtn");
+let next =  document.querySelector(".nextBtn");
 
 prev.addEventListener("click", function() {
     if (translate > 0){
-        translate -= 25
+        translate -= 25;
         document.querySelector(".inner").style.transform = `translateX(${-translate}%)`;
     }
 });
 next.addEventListener("click", function(){
     if (translate < 75){
-        translate += 25
+        translate += 25;
         document.querySelector(".inner").style.transform = `translateX(${-translate}%)`;
     }
 })
 
 
-let prev2 = document.querySelector(".prevBtn2")
-let next2 = document.querySelector(".nextBtn2")
-let translate2 = 0
+
+
+
+function switchPage(page){
+  if (page == 0){
+    document.querySelector('.loginPage').classList.replace('d-default', 'd-none')
+    document.querySelector('.registerPage').classList.replace('d-default', 'd-none')
+    document.querySelector('.mainPage').classList.replace('d-none', 'd-default')
+  }
+  else if(page == 1){
+    document.querySelector('.loginPage').classList.replace('d-none', 'd-default')
+    document.querySelector('.registerPage').classList.replace('d-default', 'd-none')
+    document.querySelector('.mainPage').classList.replace('d-default', 'd-none')
+  }
+  else if(page == 2){
+    document.querySelector('.registerPage').classList.replace('d-none', 'd-default')
+    document.querySelector('.loginPage').classList.replace('d-default', 'd-none')
+    document.querySelector('.mainPage').classList.replace('d-default', 'd-none')
+  }
+}
+
+document.querySelector("#loginTag").addEventListener("click", function(){
+    switchPage(1);
+})
+document.querySelector("#homeTag").addEventListener("click", function(){
+    switchPage(0);
+})
+document.querySelector("#registerTag").addEventListener("click", function(){
+    switchPage(2);
+})
+
+let prev2 = document.querySelector(".prevBtn2");
+let next2 = document.querySelector(".nextBtn2");
+let translate2 = 0;
 
 prev2.addEventListener("click", function() {
     if (translate2 > 0){
-        translate2 -= 50
+        translate2 -= 50;
         if (translate2 == 1){
-            translate2 = 0
+            translate2 = 0;
         }
         document.querySelector(".inner2").style.transform = `translateX(${-translate2}%)`;
     }
 });
 next2.addEventListener("click", function(){
     if (translate2 < 50){
-        translate2 += 50
+        translate2 += 50;
         if (translate2 == 99){
-            translate2 = 100
-        }
+            translate2 = 100;
+        };
         document.querySelector(".inner2").style.transform = `translateX(${-translate2}%)`;
     }
 })
 
-let prev3 = document.querySelector(".prevBtn3")
-let next3 = document.querySelector(".nextBtn3")
-let translate3 = 0
+let prev3 = document.querySelector(".prevBtn3");
+let next3 = document.querySelector(".nextBtn3");
+let translate3 = 0;
 
 prev3.addEventListener("click", function() {
     if (translate3 > 0){
-        translate3 -= 50
+        translate3 -= 50;
         if (translate3 == 1){
-            translate3 = 0
+            translate3 = 0;
         }
         document.querySelector(".inner3").style.transform = `translateX(${-translate3}%)`;
     }
 });
 next3.addEventListener("click", function(){
     if (translate3 < 50){
-        translate3 += 50
+        translate3 += 50;
         if (translate3 == 99){
-            translate3 = 100
+            translate3 = 100;
         }
         document.querySelector(".inner3").style.transform = `translateX(${-translate3}%)`;
     }
