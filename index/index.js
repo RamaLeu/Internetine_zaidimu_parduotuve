@@ -13,6 +13,7 @@ appId: "1:70390486239:web:f0e884d634f8114597856a"
 };
 
 let currentUser
+let register = false
 const app = initializeApp(firebaseConfig); 
 const db = getDatabase(app);
 const auth = getAuth();
@@ -34,18 +35,19 @@ setPersistence(auth, browserSessionPersistence)
 
 //-Rasymas i duombaze kuri yra different nuo authentication duombazes, su papildomais duomenis
 function writeUserData(data) {
+    console.log(currentUser)
     const db = getDatabase();
     set(ref(db, 'users/' + data.id), {
       username: data.username,
       admin: data.admin,
-      surname: data.surname,
       email: data.email,
+      surname: data.surname,
       country: data.country,
     });
   }
 
 let userData = {
-    "id": 2,
+    "id": "",
     "admin": true,
     "username": "",
     "surname": "",
@@ -95,6 +97,7 @@ document.querySelector("#signUpSubmit").addEventListener("click", function(e){
   console.log(result)
 
   if (result){
+      register = true;
       userData.username = document.querySelector("#reg-username").value;
       userData.surname = document.querySelector("#reg-surname").value;
       userData.email = document.querySelector("#reg-email").value;
@@ -104,7 +107,6 @@ document.querySelector("#signUpSubmit").addEventListener("click", function(e){
       .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          switchPage(0);
           // ...
       })
       .catch((error) => {
@@ -112,7 +114,9 @@ document.querySelector("#signUpSubmit").addEventListener("click", function(e){
           const errorMessage = error.message;
           // ..
       });
-      writeUserData(userData) 
+
+      //writeUserData(userData) 
+      switchPage(0);
   }
   
 })
@@ -126,6 +130,11 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     const uid = user.uid;
     console.log(uid)
+    if (register){
+      userData.id = uid;
+      writeUserData(userData);
+      register = false
+    }
     currentUser = user 
     document.querySelector('.regBtns').innerHTML = `<li>${currentUser.email}</li>
     <a href="#" class="logoutNav"><li>LOGOUT</li></a>`;
@@ -277,7 +286,7 @@ next3.addEventListener("click", function(){
 
 function switchPage(page){
   if (page == 0){
-    switchingFunction('registerPage', true);
+    switchingFunction('registerPage', false);
     switchingFunction('loginPage', false);
     switchingFunction('mainPage', true);
   }
