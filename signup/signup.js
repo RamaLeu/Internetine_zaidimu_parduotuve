@@ -1,6 +1,6 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-auth.js";
+  import { getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.5/firebase-auth.js";
   import { getDatabase, ref, set  } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js";
 
 
@@ -26,7 +26,10 @@ const db = getDatabase(app);
 
 
 
+
+
 const auth = getAuth();
+
 createUserWithEmailAndPassword(auth, email, password)
 .then((userCredential) => {
     // Signed in 
@@ -58,7 +61,7 @@ let errs = document.querySelector(".errs");
 let errList = []
 
 let userData = {
-    "id": 1,
+    "id": 2,
     "admin": true,
     "username": "",
     "surname": "",
