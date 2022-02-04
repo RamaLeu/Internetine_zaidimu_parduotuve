@@ -2,7 +2,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase
 import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword , onAuthStateChanged, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-auth.js";
 import { getDatabase, ref, set  } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js";
 
-
 const firebaseConfig = {
 apiKey: "AIzaSyDA9Ez4i7vSWvq8uzvmmy8CMQ54x-EDRfs",
 databaseURL: "https://derrastore-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -14,28 +13,26 @@ appId: "1:70390486239:web:f0e884d634f8114597856a"
 };
 
 let currentUser
-
 const app = initializeApp(firebaseConfig); 
-
 const db = getDatabase(app);
-
-
-
-
-
 const auth = getAuth();
 
+//Klaidu sarasas registracijos metu
+let errList = []
+let errs = document.querySelector(".errs");
 
-
-
-
-
-
+//Prisijungimo islaikymas perkrovus puslapi
+setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    return signInWithEmailAndPassword(auth, email, password);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 //register dalis 
 
-
-
-
+//-Rasymas i duombaze kuri yra different nuo authentication duombazes, su papildomais duomenis
 function writeUserData(data) {
     const db = getDatabase();
     set(ref(db, 'users/' + data.id), {
@@ -57,7 +54,7 @@ let userData = {
     "password": ""
 }
 
-
+//- Checkinimas, jei registracijos metu kuris nors input field yra empty
 function checkIfEmpty(err, value){
     console.log(`Value is ${value}`)
     if (value == "" /* || value == "----" */ || value == false){
@@ -71,46 +68,89 @@ function checkIfEmpty(err, value){
 }
 
 
+document.querySelector("#signUpSubmit").addEventListener("click", function(e){
+  e.preventDefault()
+  let result = true
+  document.querySelector(".errs").innerHTML = "";
+  result = checkIfEmpty("<p>Enter a username</p><br/>", document.querySelector("#reg-username").value)
+  result = checkIfEmpty("<p>Enter a surname</p><br/>", document.querySelector("#reg-surname").value)
+  result = checkIfEmpty("<p>Enter your email</p><br/>", document.querySelector("#reg-email").value)
+  result = checkIfEmpty("<p>Pick a country</p><br/>", document.querySelector("#reg-country").value)
+  result = checkIfEmpty("<p>Enter a password</p><br/>", document.querySelector("#reg-password").value)
+  result = checkIfEmpty("<p>Repeat your password</p><br/>", document.querySelector("#repeat-password").value)
+  result = checkIfEmpty("<p>You must agree to our privacy policy</p><br/>", document.querySelector("#agreement").checked)
+
+  if (document.querySelector("#reg-password").value == document.querySelector("#repeat-password").value){
+  }
+  else{
+      result = false;
+      errList.push("Passwords must match")
+  }
+
+  for (let item in errList){
+      errs.innerHTML += errList[item];
+  }
+  errList = []
+
+  console.log(result)
+
+  if (result){
+      userData.username = document.querySelector("#reg-username").value;
+      userData.surname = document.querySelector("#reg-surname").value;
+      userData.email = document.querySelector("#reg-email").value;
+      userData.country = document.querySelector("#reg-country").value;
+      userData.password = document.querySelector("#reg-password").value;
+      createUserWithEmailAndPassword(auth, userData.email, userData.password)
+      .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          switchPage(0);
+          // ...
+      })
+      .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+      });
+      writeUserData(userData) 
+  }
+  
+})
+
 //register dalies pabaiga
+
+
+//Kai pasikeicia prisijungimo state (prisijungiama, atsijungiama, etc) suveikianti funkcija
+onAuthStateChanged(auth, (user) => {
+  //Jeigu user yra prisijunges, naudojama pradinio prisijungimo atveju
+  if (user) {
+    const uid = user.uid;
+    console.log(uid)
+    currentUser = user 
+    document.querySelector('.regBtns').innerHTML = `<li>${currentUser.email}</li>
+    <a href="#" class="logoutNav"><li>LOGOUT</li></a>`;
+    document.querySelector('.logoutNav').addEventListener("click", function(e){
+      e.preventDefault()
+      logout()
+    });
+    // ...
+  } else {
+    document.querySelector('.regBtns').innerHTML = `<a href="#" id="loginTag"><li>Login</li></a>
+    <a href="#" id="registerTag"><li>Sign up</li></a>`;
+    document.querySelector("#registerTag").addEventListener("click", function(){
+      switchPage(2);
+    });
+    document.querySelector("#loginTag").addEventListener("click", function(){
+      switchPage(1);
+    });
+  }
+  });
+  
+
 //login dalis
 
 
-
-setPersistence(auth, browserSessionPersistence)
-  .then(() => {
-    return signInWithEmailAndPassword(auth, email, password);
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-
-onAuthStateChanged(auth, (user) => {
-if (user) {
-  const uid = user.uid;
-  console.log(uid)
-  currentUser = user 
-  document.querySelector('.regBtns').innerHTML = `<li>${currentUser.email}</li>
-  <a href="#" class="logoutNav"><li>LOGOUT</li></a>`;
-  document.querySelector('.logoutNav').addEventListener("click", function(e){
-    e.preventDefault()
-    logout()
-  });
-  // ...
-} else {
-  document.querySelector('.regBtns').innerHTML = `<a href="#" id="loginTag"><li>Login</li></a>
-  <a href="#" id="registerTag"><li>Sign up</li></a>`;
-  document.querySelector("#registerTag").addEventListener("click", function(){
-    switchPage(2);
-  });
-  document.querySelector("#loginTag").addEventListener("click", function(){
-    switchPage(1);
-  });
-}
-});
-
-
-
+//-Prisijungimas prie sistemos
 function login(){
   let email = document.querySelector("#log-email").value
   let password = document.querySelector("#log-password").value
@@ -128,6 +168,7 @@ function login(){
 
 }
 
+//-Atsijungimas nuo sistemos
 function logout(){
   signOut(auth).then(() => {
     console.log("signed out")
@@ -137,6 +178,8 @@ function logout(){
   });
 }
 
+
+//-Consoleje ismeta esama user
 function checkUser(){
   if (currentUser){
     const uid = currentUser.uid;
@@ -147,82 +190,23 @@ function checkUser(){
 
 }
 
-//login dalies pabaiga
-
-
-
 document.querySelector("#signInSubmit").addEventListener("click", function(e){
-  e.preventDefault()
-  login()
+  e.preventDefault();
+  login();
 })
 document.querySelector('#logout').addEventListener("click", function(e){
-e.preventDefault()
-logout()
+e.preventDefault();
+logout();
 })
 
 document.querySelector('#checkUser').addEventListener("click", function(e){
-e.preventDefault()
-checkUser()
+e.preventDefault();
+checkUser();
 })
 
 
- 
-let errList = []
-let errs = document.querySelector(".errs");
-
-
-document.querySelector("#signUpSubmit").addEventListener("click", function(e){
-    e.preventDefault()
-    let result = true
-    document.querySelector(".errs").innerHTML = "";
-    result = checkIfEmpty("<p>Enter a username</p><br/>", document.querySelector("#reg-username").value)
-    result = checkIfEmpty("<p>Enter a surname</p><br/>", document.querySelector("#reg-surname").value)
-    result = checkIfEmpty("<p>Enter your email</p><br/>", document.querySelector("#reg-email").value)
-    result = checkIfEmpty("<p>Pick a country</p><br/>", document.querySelector("#reg-country").value)
-    result = checkIfEmpty("<p>Enter a password</p><br/>", document.querySelector("#reg-password").value)
-    result = checkIfEmpty("<p>Repeat your password</p><br/>", document.querySelector("#repeat-password").value)
-    result = checkIfEmpty("<p>You must agree to our privacy policy</p><br/>", document.querySelector("#agreement").checked)
-
-    if (document.querySelector("#reg-password").value == document.querySelector("#repeat-password").value){
-    }
-    else{
-        result = false;
-        errList.push("Passwords must match")
-    }
-
-    for (let item in errList){
-        errs.innerHTML += errList[item];
-    }
-    errList = []
-
-    console.log(result)
-
-    if (result){
-        userData.username = document.querySelector("#reg-username").value;
-        userData.surname = document.querySelector("#reg-surname").value;
-        userData.email = document.querySelector("#reg-email").value;
-        userData.country = document.querySelector("#reg-country").value;
-        userData.password = document.querySelector("#reg-password").value;
-        createUserWithEmailAndPassword(auth, userData.email, userData.password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            switchPage(0);
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // ..
-        });
-        writeUserData(userData) 
-    }
-    
-})
-
-
-
-
+//login dalies pabaiga
+//Carouseles script
 
 let translate = 0;
 
@@ -240,38 +224,6 @@ next.addEventListener("click", function(){
         translate += 25;
         document.querySelector(".inner").style.transform = `translateX(${-translate}%)`;
     }
-})
-
-
-
-
-
-function switchPage(page){
-  if (page == 0){
-    document.querySelector('.loginPage').classList.replace('d-default', 'd-none')
-    document.querySelector('.registerPage').classList.replace('d-default', 'd-none')
-    document.querySelector('.mainPage').classList.replace('d-none', 'd-default')
-  }
-  else if(page == 1){
-    document.querySelector('.loginPage').classList.replace('d-none', 'd-default')
-    document.querySelector('.registerPage').classList.replace('d-default', 'd-none')
-    document.querySelector('.mainPage').classList.replace('d-default', 'd-none')
-  }
-  else if(page == 2){
-    document.querySelector('.registerPage').classList.replace('d-none', 'd-default')
-    document.querySelector('.loginPage').classList.replace('d-default', 'd-none')
-    document.querySelector('.mainPage').classList.replace('d-default', 'd-none')
-  }
-}
-
-document.querySelector("#loginTag").addEventListener("click", function(){
-    switchPage(1);
-})
-document.querySelector("#homeTag").addEventListener("click", function(){
-    switchPage(0);
-})
-document.querySelector("#registerTag").addEventListener("click", function(){
-    switchPage(2);
 })
 
 let prev2 = document.querySelector(".prevBtn2");
@@ -319,3 +271,46 @@ next3.addEventListener("click", function(){
         document.querySelector(".inner3").style.transform = `translateX(${-translate3}%)`;
     }
 })
+
+//Carouseles scripto pabaiga
+//Puslapio keitimas
+
+function switchPage(page){
+  if (page == 0){
+    switchingFunction('registerPage', true);
+    switchingFunction('loginPage', false);
+    switchingFunction('mainPage', true);
+  }
+  else if(page == 1){
+    switchingFunction('registerPage', false);
+    switchingFunction('loginPage', true);
+    switchingFunction('mainPage', false);
+  }
+  else if(page == 2){
+    switchingFunction('registerPage', true);
+    switchingFunction('loginPage', false);
+    switchingFunction('mainPage', false);
+  }
+}
+
+function switchingFunction(className, visibility){
+  if (visibility){
+    document.querySelector(`.${className}`).classList.replace('d-none', 'd-default')
+  }
+  else{
+    document.querySelector(`.${className}`).classList.replace('d-default', 'd-none')
+  }
+}
+
+document.querySelector("#loginTag").addEventListener("click", function(){
+    switchPage(1);
+})
+document.querySelector("#homeTag").addEventListener("click", function(){
+    switchPage(0);
+})
+document.querySelector("#registerTag").addEventListener("click", function(){
+    switchPage(2);
+})
+
+
+//Puslapio keitimo pabaiga
