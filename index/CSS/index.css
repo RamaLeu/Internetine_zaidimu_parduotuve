@@ -196,7 +196,7 @@
 
 .mainFooter {
   background-color: rgb(99, 98, 98);
-  height: 270px;
+  height: 360px;
 }
 .FAQ {
   background-color: lightgray;
@@ -242,4 +242,25 @@ img {
   float: left;
   padding-left: 150px;
   padding-bottom: 50px;
+}
+.slot img{
+  border-radius: 0;
+  border: none;
+  width: 160px;
+}
+.item2 img{
+  border-radius: 0;
+  border: none;
+  width: 100%;
+}
+.bigItem3Img img{
+  border-radius: 0;
+  border: none;
+  width: 60%;
+}
+.slot1, .slot3{
+  margin-left: 40px;
+}
+.slot2, .slot4{
+  margin-right: 80px;
 }

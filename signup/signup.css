@@ -1,0 +1,108 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-background: #4d7ba2;
+  --text: #ffffff;
+  --input-background: #414a4a;
+  --button-background: #324b4a;
+}
+
+/* ! Aura gali tuos properties pakaiesti */
+header {
+  background-color: aqua;
+}
+
+/* ! Main form */
+
+main {
+  background-color: var(--main-background);
+  width: 100%;
+}
+
+.main-form {
+  padding-top: 3em;
+  padding-bottom: 3em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.form-h3 {
+  font-weight: lighter;
+  margin-bottom: 2em;
+}
+
+.main-label,
+.main-select-label {
+  margin: 0.3em;
+  font-size: 0.8rem;
+}
+
+.main-input,
+.main-select {
+  width: 17.7rem;
+  height: 2.4rem;
+  padding-left: 10px;
+}
+
+.label-bottom {
+  margin-top: 1em;
+}
+
+input,
+select {
+  color: var(--text);
+}
+
+.btn-form {
+  padding: 0.6em;
+  width: 7rem;
+  margin-top: 1em;
+  background-color: var(--button-background);
+  color: var(--text);
+  text-decoration: none;
+  border: none;
+}
+
+.btn-form:hover {
+  filter: brightness(85%);
+}
+
+.form-h3,
+label,
+button {
+  color: var(--text);
+}
+
+input,
+select {
+  background: var(--input-background);
+  border: none;
+}
+
+.label-bottom {
+  width: 25%;
+  padding-left: 1.4em;
+}
+
+.bottom-links {
+  color: var(--input-background);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.bottom-links:hover {
+  color: black;
+}
+
+/* ! Edgarai gali tuos properties pakaiesti */
+
+footer {
+  background-color: brown;
+}
