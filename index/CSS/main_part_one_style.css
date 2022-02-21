@@ -128,16 +128,17 @@
   }
 
   .cBtn, .prev {
-    height: 15%;
+    height: 12%;
     width: 5%;
     border: 2px solid #af8331;
-    border-radius: 40%;
+    border-radius: 25%;
     background-color: transparent;
     margin-left: 5px;
     margin-right: 5px;
     transition: 500ms ease-in-out;
     font-size: 1.5em;
     color: #af8331;
+    position: relative;
   }
 
   .cBtn:hover,  .prev:hover {
@@ -147,7 +148,27 @@
   }
 
   .prev {
-    height: 30%;
+    height: 25%;
+  }
+
+  .cBtn:before {
+    content: '';
+    width: 2px;
+    height: 90px;
+    position: absolute;
+    bottom: 3em;
+    left: 1.1em;
+    background-color: #af8331;
+  }
+
+  .cBtn::after {
+    content: '';
+    width: 2px;
+    height: 90px;
+    position: absolute;
+    top: 3em;
+    left: 1.1em;
+    background-color: #af8331;
   }
 
   .mainTwo {
