@@ -10,12 +10,6 @@
   --input-background: #414a4a;
   --button-background: #324b4a;
 }
-
-/* ! Aura gali tuos properties pakaiesti */
-header {
-  background-color: aqua;
-}
-
 /* ! Main form */
 
 main {

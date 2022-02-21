@@ -1,53 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Internetine zaidimu parduotuve</title>
-    <link rel="stylesheet" href="CSS/index.css" />
-    <link rel="stylesheet" href="CSS/main_part_one_style.css" />
-    <link rel="stylesheet" href="CSS/register.css" />
-    <link rel="stylesheet" href="CSS/login.css"/>
-  </head>
-  <body>
-    <!-- HEADERIO SPACE- AURA-->
-    <header class="d-flex">
-      <nav class="left-nav">
-        <!-- PIRMA SEKCIJA KAIRĖJE -->
-        <div class="store-logo">
-          <!-- LOGO BOX -->
-          <a href="#" id="homeTag"><img src="../img/LOGO.png" alt="Store logo" /></a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internetine zaidimu parduotuve</title>
+  <link rel="stylesheet" href="CSS/index.css" />
+  <link rel="stylesheet" href="CSS/main_part_one_style.css" />
+  <link rel="stylesheet" href="CSS/register.css" />
+  <link rel="stylesheet" href="CSS/login.css" />
+</head>
+
+<body>
+  <!-- HEADERIO SPACE- AURA-->
+  <header class="d-flex">
+    <nav class="left-nav">
+      <!-- PIRMA SEKCIJA KAIRĖJE -->
+      <div class="store-logo">
+        <!-- LOGO BOX -->
+        <a href="#" id="homeTag"><img src="../img/LOGO.png" alt="Store logo" /></a>
+      </div>
+      <ul>
+        <li><a href="#">Store</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </nav>
+    <nav class="right-nav">
+      <ul>
+        <div class="regBtns">
+          <a href="#" id="loginTag">
+            <li>Login</li>
+          </a>
+          <a href="#" id="registerTag">
+            <li>Sign up</li>
+          </a>
         </div>
-        <ul>
-          <li><a href="#">Store</a></li>
-          <li><a href="#">Community</a></li>
-          <li><a href="#">Support</a></li>
-        </ul>
-      </nav>
-      <nav class="right-nav">
-        <ul>
-          <div class="regBtns">
-          <a href="#" id="loginTag"><li>Login</li></a>
-          <a href="#" id="registerTag"><li>Sign up</li></a>
-          </div>
-          <a href="#"><li>
+        <a href="#">
+          <li>
             Lietuvių | LT
             <ul class="language-menu">
-              <a href="#"><li>Anglų | ENG</li></a>
-              <a href="#"><li>Lietuvių | LT</li></a>
+              <a href="#">
+                <li>Anglų | ENG</li>
+              </a>
+              <a href="#">
+                <li>Lietuvių | LT</li>
+              </a>
             </ul>
-          </li></a>
-        </ul>
-      </nav>
-    </header>
-    <!-- Header'io pabaiga, Main'o pradžia -->
-    <main>
-      <div class="mainPage d-default">
+          </li>
+        </a>
+      </ul>
+    </nav>
+  </header>
+  <!-- Header'io pabaiga, Main'o pradžia -->
+  <main>
+    <div class="mainPage d-default">
       <div class="mainPartOne">
         <div class="mainOne">
           <div class="carouselWBtns">
-            <button class="prevBtn prev cBtn"></button>
+            <button class="prevBtn cBtn">&#8592;</button>
             <div class="carousel">
               <div class="inner">
                 <div class="item">
@@ -144,12 +156,12 @@
                 </div>
               </div>
             </div>
-            <button class="nextBtn cBtn"></button>
+            <button class="nextBtn cBtn">&#8594;</button>
           </div>
         </div>
         <div class="mainTwo">
           <div class="carouselWBtns">
-            <button class="prevBtn2 prev cBtn"></button>
+            <button class="prevBtn2 prev">&#8592;</button>
             <div class="carousel">
               <div class="inner2">
                 <div class="item2">
@@ -195,12 +207,12 @@
                 </div>
               </div>
             </div>
-            <button class="nextBtn2 cBtn"></button>
+            <button class="nextBtn2 prev">&#8594;</button>
           </div>
         </div>
         <div class="mainThree">
           <div class="carouselWBtns">
-            <button class="prevBtn3 prev cBtn"></button>
+            <button class="prevBtn3 cBtn">&#8592;</button>
             <div class="carousel">
               <div class="inner3">
                 <div class="bigItem3">
@@ -279,15 +291,15 @@
                 </div>
               </div>
             </div>
-            <button class="nextBtn3 cBtn"></button>
+            <button class="nextBtn3 cBtn">&#8594;</button>
           </div>
         </div>
       </div>
-        
+
       <section class="container-4-flex">
         <div class="item-1-top">
           <h1 class="item-1-top-h1">Looking for recommendations?</h1>
-        
+
           <!-- cia reikia margino nes dabar a buttonas siek tiek overlappina-->
           <p class="item-1-top-p">
             Sign in to view personalized recommendations
@@ -304,132 +316,112 @@
         </div>
       </section>
 
-      </div>
+    </div>
 
 
-      <div class="loginPage d-none">
-        <div class="main-cotainer" >
-          <div class="item-1">
-            <form class="main-form">
-              <h3 class="form-h3">SIGN IN</h3>
-              <label class="main-label">Account email</label>
-              <input class="main-input" type="email" id="log-email" />
-              <label class="main-label">Password</label>
-              <input class="main-input" type="password" id="log-password" />
-              <a href="#" class="btn-form" id="signInSubmit" type="button">Sign In</a>
-              <a class="item-1-link" href="#">Forgot your password?</a>
-            </form>
-          </div>
-          <div class="item-2">
-            <p class="item-2-text">Join and discover thousands of games to play.</p>
-            <a class="item-2-link" href="#">Learn More </a>
-            <img
-              class="item-2-img"
-              src="./img/Gaming Illustration in PNG, SVG.png"
-              alt="img"
-            />
-            <p class="item-2-text-2">It's free and easy to use.</p>
-    
-            <a href="#" class="btn-sign-up" type="button">Confirm</a>
-            <button id="logout">LOG OUT</button>
-            <button id="checkUser" >CURRENT USER</button>
-          </div>
+    <div class="loginPage d-none">
+      <div class="main-cotainer">
+        <div class="item-1">
+          <form class="main-form">
+            <h3 class="form-h3">SIGN IN</h3>
+            <label class="main-label">Account email</label>
+            <input class="main-input" type="email" id="log-email" />
+            <label class="main-label">Password</label>
+            <input class="main-input" type="password" id="log-password" />
+            <a href="#" class="btn-form" id="signInSubmit" type="button">Sign In</a>
+            <a class="item-1-link" href="#">Forgot your password?</a>
+          </form>
+        </div>
+        <div class="item-2">
+          <p class="item-2-text">Join and discover thousands of games to play.</p>
+          <a class="item-2-link" href="#">Learn More </a>
+          <img class="item-2-img" src="./img/Gaming Illustration in PNG, SVG.png" alt="img" />
+          <p class="item-2-text-2">It's free and easy to use.</p>
+
+          <a href="#" class="btn-sign-up" type="button">Confirm</a>
+          <button id="logout">LOG OUT</button>
+          <button id="checkUser">CURRENT USER</button>
         </div>
       </div>
+    </div>
 
 
-      <div class="registerPage d-none">
-        <p class="errs">
+    <div class="registerPage d-none">
+      <p class="errs">
+      </p>
+      <form class="main-form" id="signUpForm">
+        <h3 class="form-h3">Create your personal account</h3>
+        <label class="main-label">Username</label>
+        <input class="main-input" type="text" id="reg-username" required />
+        <label class="main-label">Surname</label>
+        <input class="main-input" type="text" id="reg-surname" required />
+        <label class="main-label">Email</label>
+        <input class="main-input" type="email" id="reg-email" required />
+        <label class="main-select-label" for="country">Country of Residence</label>
+        <select class="main-select" id="reg-country" name="countrylist" form="countryform" required>
+          <option value="----">----</option>
+          <option value="----">----</option>
+          <option value="----">----</option>
+          <option value="----">----</option>
+        </select>
+        <label class="main-label">Password</label>
+        <input class="main-input" type="password" id="reg-password" required />
+        <label class="main-label">Repeat Password</label>
+        <input class="main-input" type="password" id="repeat-password" required />
+        <label class="label-bottom">
+          <input type="checkbox" name="confirm" id="agreement" value="agreement" required />
+          I am 13 years of age or older and agree to the terms of the
+          <a class="bottom-links" href="#">Subscriber Agreement</a> and the
+          <a class="bottom-links" href="#">Privacy Policy</a>.</label>
+
+        <input type="submit" class="btn-form" id="signUpSubmit" value="Confirm" />
+      </form>
+
+
+    </div>
+  </main>
+
+  <!--Footah, Edgar goes here-->
+  <footer class='mainFooter'>
+    <div class="FAQ">
+      <h1>Frequently Asked Questions! Need Help?</h1>
+      <p>We've got you covered</p>
+      <p>
+        <a href="">I received my game(s) as a gift, will I gain access to all
+          features?</a>
+      </p>
+      <p>
+        <a href="">How will know that I added exactly $5.00 USD to my Wallet?</a>
+      </p>
+      <p>
+        <a href="">I recently added Wallet funds but they have not appeared, what do
+          I do?</a>
+      </p>
+      <p>
+        <a href="">
+          What kind of Steam Wallet and item listing restrictions apply?</a>
+      </p>
+    </div>
+    <div class="logo-end">
+      <div class="logo"><img src="../img/LOGO.png" alt="logo" /></div>
+      <div class="endFooter">
+        <p>
+          © 2022 Internetinė žaidimų parduotuvė. All rights reserved. All
+          trademarks are property of their respective owners in the LTU and
+          other countries.
         </p>
-        <form class="main-form" id="signUpForm">
-          <h3 class="form-h3">Create your personal account</h3>
-          <label class="main-label">Username</label>
-          <input class="main-input" type="text" id="reg-username" required/>
-          <label class="main-label">Surname</label>
-          <input class="main-input" type="text" id="reg-surname" required/>
-          <label class="main-label">Email</label>
-          <input class="main-input" type="email" id="reg-email" required/>
-          <label class="main-select-label" for="country">Country of Residence</label>
-          <select
-            class="main-select"
-            id="reg-country"
-            name="countrylist"
-            form="countryform"
-            required>
-            <option value="----">----</option>
-            <option value="----">----</option>
-            <option value="----">----</option>
-            <option value="----">----</option>
-          </select>
-          <label class="main-label">Password</label>
-          <input class="main-input" type="password" id="reg-password" required/>
-          <label class="main-label">Repeat Password</label>
-          <input class="main-input" type="password" id="repeat-password" required/>
-          <label class="label-bottom">
-            <input type="checkbox" name="confirm" id="agreement" value="agreement" required/>
-            I am 13 years of age or older and agree to the terms of the
-            <a class="bottom-links" href="#">Subscriber Agreement</a> and the
-            <a class="bottom-links" href="#">Privacy Policy</a>.</label
-          >
-        
-          <input type="submit" class="btn-form" id="signUpSubmit" value="Confirm"/>
-        </form> 
-
-
+        <p>
+          VAT included in all prices where applicable. Privacy Policy |
+          Legal | IŽP Subscriber Agreement | Refunds | Cookies
+        </p>
       </div>
-    </main>
+    </div>
+  </footer>
+  <!-- Fontawesome scriptas del triangle-u-->
 
-    <!--Footah, Edgar goes here-->
-    <footer>
-      <div class="mainFooter">
-        <div class="FAQ">
-          <h1>Frequently Asked Questions (FAQ)</h1>
-          <p>
-            <a href=""
-              >I received my game(s) as a gift, will I gain access to all
-              features?</a
-            >
-          </p>
-          <p>
-            <a href=""
-              >How will know that I added exactly $5.00 USD to my Wallet?</a
-            >
-          </p>
-          <p>
-            <a href=""
-              >I recently added Wallet funds but they have not appeared, what do
-              I do?</a
-            >
-          </p>
-          <p>
-            <a href="">
-              What kind of Steam Wallet and item listing restrictions apply?</a
-            >
-          </p>
-        </div>
-        <div class="logo-end">
-          <div class="logo"><img src="../img/LOGO.png" alt="logo" /></div>
-          <div class="endFooter">
-            <p>
-              © 2022 Internetinė žaidimų parduotuvė. All rights reserved. All
-              trademarks are property of their respective owners in the LTU and
-              other countries.
-            </p>
-            <p>
-              VAT included in all prices where applicable. Privacy Policy |
-              Legal | IŽP Subscriber Agreement | Refunds | Cookies
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Fontawesome scriptas del triangle-u-->
+  <script src="https://kit.fontawesome.com/15a185c6f2.js" crossorigin="anonymous"></script>
+  <!-- carouseles skriptas mostly, will add more-->
+  <script src="index.js" type="module"></script>
+</body>
 
-    <script
-      src="https://kit.fontawesome.com/15a185c6f2.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- carouseles skriptas mostly, will add more-->
-    <script src="index.js" type="module"></script>
-  </body>
 </html>
