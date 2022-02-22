@@ -328,11 +328,6 @@ img {
   float: left;
   padding-left: 130px;
 }
-.slot img{
-  border-radius: 0;
-  border: none;
-  width: 160px;
-}
 .item2 img{
   border-radius: 0;
   border: none;
@@ -342,10 +337,4 @@ img {
   border-radius: 0;
   border: none;
   width: 60%;
-}
-.slot1, .slot3{
-  margin-left: 40px;
-}
-.slot2, .slot4{
-  margin-right: 80px;
 }
