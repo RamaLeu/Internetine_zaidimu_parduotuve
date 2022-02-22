@@ -242,7 +242,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    
   }
   .item3Sale{
     background-color: lawngreen;
@@ -269,7 +268,6 @@
     text-align: center;
     color: red;
   }
-  
   .itemGroup3 {
     width: 70%;
     height: 100%;
