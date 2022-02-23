@@ -11,7 +11,7 @@
   .carouselWBtns {
     width: 70%;
     display: flex;
-    align-items: center;
+    align-items: center;  
   }
   
   .carousel {
@@ -22,7 +22,7 @@
   }
   
   .mainOne {
-    height: 40vh;
+    height: 47vh;
     display: flex;
     justify-content: center;
   }
@@ -39,7 +39,7 @@
   .item {
     width: 100%;
     height: 100%;
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,7 +49,7 @@
   .item1BigImg{
       width: 50%;
       height: 100%;
-      background-color: beige;
+      background-color: #474747;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -58,9 +58,10 @@
   .itemBigHalf2{
     width: 50%;
     height: 100%;
-    background-color: bisque;
+    background-color: #474747;
   }
   .gameBigTitle{
+    margin-top: 3em;
     width: 100%;
     background-color: blueviolet;
     height: 10%;
@@ -70,33 +71,30 @@
   }
 
   .item1Group{
-      margin-top: 2.5%;
       height: 65%;
       width: 100%;
-      background-color: chocolate;
+      background-color: gray;
       display: flex;
       flex-wrap: wrap;
   }
 
-  .slot{
-      width: 50%;
-      height: 50%;
-      background-color: darkgoldenrod;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
+  /* .slot{
+       width: 50%; 
+       height: 50%; 
+       background-color: darkgoldenrod; 
+       display: flex; 
+       justify-content: center;
+      align-items: center; 
+  } */
 
 
   .item1UnderInfo{
-      margin-top: 2.5%;
       height: 10%;
       width: 100%;
-      background-color: darkolivegreen;
   }
   .item1Tags{
       width: 100%;
-      height: 100%;
+      height: 50%;
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
@@ -115,14 +113,23 @@
   }
 
   .item1Price{
-      width: 15%;
-      background-color: deepskyblue;
-      text-align: center;
-      border-radius: 5px;
+      width: 20%;
+  }
+  .item1Price button{
+    background-color: greenyellow;
+    border: 1px solid black;
+    color: black;
+    border-radius: 5px;
+    padding: 2%;
+  }
+  .item2Price{
+    background-color: greenyellow;
+    border: 1px solid black;
+    border-radius: 5px;
   }
 
   .item1PriceContainer{
-      width: 100%;
+      width: 120%;
       display: flex;
       justify-content: center;
   }
@@ -212,7 +219,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: darkgray;
     border-radius: 3px;
   }
   
@@ -248,15 +254,21 @@
     justify-content: center;
     align-items: center;
   }
+  .bigItem3 img{
+    width: 90%;
+    margin: 15px;
+
+  }
   .bigItem3Img{
     height: 90%;
     background-color: darkgray;
     width: 100%;
+    padding: 10px;
   }
   .bigItem3Under{
     height: 10%;
     background-color: gray;
-    width: 100%;
+    width: 150%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -280,6 +292,12 @@
     align-items: center;
     margin-right: 2%;
   }
+  .bigItem3Under  .discount{
+    background-color: rgb(48, 47, 47);
+    width: 70px;
+    text-align: center;
+    color: red;
+  }
   .itemGroup3 {
     width: 70%;
     height: 100%;
@@ -296,4 +314,21 @@
 }
 .d-default{
   display: block;
+}
+
+.slot{
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slot img{
+  border-radius: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+.videoPlayer{
+  width: 100%;
 }
