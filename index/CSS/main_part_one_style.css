@@ -1,14 +1,15 @@
 
   .mainPartOne{
-    background-color: #3a3b3a;
-    padding-top: 2%;
+    background-image: url(https://images.alphacoders.com/743/thumb-1920-74381.JPG);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-top: 6%;
     padding-bottom: 2%;
   }
 
-
   .carouselWBtns {
     width: 70%;
-    background-color: #3a3b3a;
     display: flex;
     align-items: center;  
   }
@@ -17,6 +18,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    border-radius: 15px;
   }
   
   .mainOne {
@@ -132,23 +134,53 @@
       justify-content: center;
   }
 
-  .cBtn {
-    height: 20%;
-    width: 2%;
-    font-size: 100%;
-    border-bottom-right-radius: 50px;
-    border-top-right-radius: 50px;
+  .cBtn, .prev {
+    height: 12%;
+    width: 5%;
+    border: 2px solid #af8331;
+    border-radius: 25%;
+    background-color: transparent;
     margin-left: 5px;
     margin-right: 5px;
+    transition: 500ms ease-in-out;
+    font-size: 1.5em;
+    color: #af8331;
+    position: relative;
   }
+
+  .cBtn:hover,  .prev:hover {
+    box-shadow: 0 50px 10px #af83318e inset;
+    cursor: pointer;
+    color: white;
+  }
+
   .prev {
-    transform: rotate(180deg);
+    height: 25%;
   }
-  
+
+  .cBtn:before {
+    content: '';
+    width: 2px;
+    height: 90px;
+    position: absolute;
+    bottom: 3em;
+    left: 1.1em;
+    background-color: #af8331;
+  }
+
+  .cBtn::after {
+    content: '';
+    width: 2px;
+    height: 90px;
+    position: absolute;
+    top: 3em;
+    left: 1.1em;
+    background-color: #af8331;
+  }
+
   .mainTwo {
     margin-top: 5vh;
     height: 20vh;
-    background-color: #3a3b3a;
     display: flex;
     justify-content: center;
   }
@@ -193,7 +225,6 @@
   .mainThree {
     margin-top: 5vh;
     height: 40vh;
-    background-color: #3a3b3a;
     display: flex;
     justify-content: center;
   }

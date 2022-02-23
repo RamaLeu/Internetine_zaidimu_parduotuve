@@ -5,19 +5,22 @@
 }
 /*----- HEADER SECTIION -----*/
 .d-flex {
-  background-color: black;
+  /* Header */
   display: flex;
   flex-flow: row wrap;
   padding: 0.5em;
   color: white;
+  background-image: url(https://images.alphacoders.com/743/thumb-1920-74381.JPG);
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .left-nav,
 .right-nav {
   display: flex;
   flex-flow: row wrap;
-  flex-basis: 50%;
   flex-grow: 1;
+  margin-top: 5em;
 }
 
 .left-nav {
@@ -25,48 +28,70 @@
   flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
+  flex-basis: 60%;
 }
 
-.store-logo {
-  width: 30px;
-  margin-left: 5em;
+.store-logo img {
+  /* Store Logo */
+  max-width: 150px;
+  height: auto;
+  object-fit: cover;
 }
 
 .left-nav ul {
   display: inline-flex;
   list-style-type: none;
   padding: 1em;
+  margin: 0;
+  border-bottom: 1px solid white;
+
 }
 
 .left-nav ul li {
   padding: 0.5em;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  transition: 500ms ease-in-out;
+}
+
+.left-nav li:hover {
+  border-radius: 15px;
+  box-shadow: 0 50px 10px #af83318e inset;
 }
 
 .right-nav {
+  /* Headers' second part */
+  display: flex;
+  flex-flow: row wrap;
   justify-content: flex-end;
-  align-items: flex-start;
+  align-items: baseline;
+  flex-basis: 40%;
+}
+
+.regBtns {
+  display: inline-flex;
 }
 
 .right-nav > ul:nth-child(1) {
   display: flex;
   list-style-type: none;
   margin: 0 5em;
-}
+  padding: 1em;
+  border-bottom: 1px solid white;
+} 
 
 .right-nav ul li {
-  border: 2px solid rgb(83, 83, 83);
   border-radius: 20px;
   background-color: black;
   padding: 0.8em;
   margin: 0.1em;
   font-size: 1em;
+  transition: 500ms ease-in-out;
 }
 
 .right-nav ul li:hover {
-  background-color: #dfa63c25;
+  box-shadow: 0 50px 10px #af83318e inset;
   cursor: pointer;
-}
+} 
 
 .right-nav a,
 .left-nav a {
@@ -187,22 +212,29 @@
 
 
 .mainFooter {
-  background-color: rgb(99, 98, 98);
-  height: auto;
+  background-image: url(https://images.alphacoders.com/743/thumb-1920-74381.JPG);
+  background-position: center;
+  background-attachment: fixed;
 }
-
 .FAQ {
-  background-color: lightgray;
-  margin: 0 auto;
-  width: 80%;
-  border-radius: 15px;
+  margin: 0 250px;
+  padding-bottom: 3px;
+  background-color: rgba(245, 245, 245, 0.685);
+}
+.FAQ p {
+  padding-left: 10px;
+  font-weight: bold;
 }
 
-footer h1 {
-  background-color: rgb(177, 173, 173);
+.FAQ > p:nth-child(2) {
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: .8em;
+}
+h1 {
   text-align: center;
   font-size: 24px;
-  padding: 0.2em;
+  padding: .3em;
 }
 
 .faqQuestions {
@@ -310,23 +342,26 @@ input[type='submit'] {
   background-color: #383c50;
 }
 
-img {
+footer img {
   border: 3px solid #ddd;
   width: 60px;
   border-radius: 50%;
 }
+
 .logo-end {
-  padding: 50px;
+  padding-top: 50px;
+  background-color: rgba(245, 245, 245, 0.685);
 }
 
 .endFooter {
   text-align: center;
   margin: 0 auto;
   font-size: 15px;
+  height: 10vh;
 }
 .logo {
   float: left;
-  padding-left: 130px;
+  padding-left: 150px;
 }
 .item2 img{
   border-radius: 0;

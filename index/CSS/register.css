@@ -11,11 +11,6 @@
     --button-background: #324b4a;
   }
   
-  /* ! Aura gali tuos properties pakaiesti */
-  header {
-    background-color: aqua;
-  }
-  
   /* ! Main form */
   
   main {
@@ -103,7 +98,7 @@
   
   /* ! Edgarai gali tuos properties pakaiesti */
   
-  footer {
+  .footer {
     background-color: brown;
   }
   
