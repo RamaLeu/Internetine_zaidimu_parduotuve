@@ -69,7 +69,7 @@ function checkIfEmpty(err, value) {
   }
 }
 
-
+console.log( document.getElementById('reg-surname'))
 document.querySelector("#signUpSubmit").addEventListener("click", function (e) {
   e.preventDefault()
   let result = true

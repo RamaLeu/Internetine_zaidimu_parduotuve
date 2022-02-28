@@ -282,7 +282,7 @@
 }
 
 
-form{
+footer form{
   display: flex;
   flex-flow: column wrap;
   justify-content:center;
@@ -315,7 +315,7 @@ form{
   cursor: pointer;
 }
 
-input[type='text'] { /* Account username, Topic */
+footer input[type='text'] { /* Account username, Topic */
   padding: 1em;
   font-size: 0.9em;
   border: none;
@@ -330,7 +330,7 @@ input[type='text'] { /* Account username, Topic */
   color: black;
 }
 
-input:hover, #question:hover {
+footer input:hover, #question:hover {
   background-color: darkgrey;
 }
 
@@ -344,7 +344,7 @@ input:hover, #question:hover {
   background-color: transparent;
 }
 
-input[type='submit'] {
+footer input[type='submit'] {
   position: relative;
   transform: translate(80%, 0);
   width: 100px;

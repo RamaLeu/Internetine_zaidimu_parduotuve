@@ -508,10 +508,14 @@
         <div class="item-1">
           <form class="main-form">
             <h3 class="form-h3">SIGN IN</h3>
-            <label class="main-label">Account email</label>
-            <input class="main-input" type="email" id="log-email" />
-            <label class="main-label">Password</label>
-            <input class="main-input" type="password" id="log-password" />
+            <div class='main-label'>
+              <input  id="log-email" type="email" required="required" class='main-input' placeholder='Account Email' />
+              <span>Account Email</span>
+            </div>
+            <div class='main-label'>
+              <input class="main-input" type="password" id="log-password" required="required" placeholder='Password' />
+              <span>Password</span>
+            </div>
             <a href="#" class="btn-form-login" id="signInSubmit" type="button">Sign In</a>
             <a class="item-1-link" href="#">Forgot your password?</a>
           </form>
@@ -572,8 +576,8 @@
         <h1>Frequently Asked Questions (FAQ)</h1>
         <h4>Need Help? We've got you covered'</h4>
 
-        <a href='#firstTopic'>
-          <p class='faqQuestions' onclick='transitionFAQThird()'>I received my game(s) as a gift, will I gain access to
+        <a href="#firstTopic">
+          <p class="faqQuestions" onclick='transitionFAQThird()'>I received my game(s) as a gift, will I gain access to
             all
             features?</p>
         </a>
@@ -587,7 +591,7 @@
             <input type="text" id="topic" name="topic" placeholder="Topic..." />
             <label for="question"></label>
             <textarea id="question" cols="40" rows="5" placeholder="Leave your question here..."></textarea>
-            <input type="submit" value="&rarr;" id='firstTopic' />
+            <input type="submit" value="&rarr;" id="firstTopic" />
           </form>
         </div>
 
