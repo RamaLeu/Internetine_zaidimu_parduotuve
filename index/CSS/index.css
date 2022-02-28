@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 /*----- HEADER SECTIION -----*/
 .d-flex {
@@ -73,6 +74,7 @@
 
 .right-nav > ul:nth-child(1) {
   display: flex;
+  flex-wrap: nowrap;
   list-style-type: none;
   margin: 0 5em;
   padding: 1em;
@@ -114,6 +116,7 @@
 .right-nav > ul li:hover > .language-menu {
   display: block;
 }
+
 /*----- HEADER SECTIION END -----*/
 /*----- MAIN SECTIION -----*/
 
@@ -220,6 +223,7 @@
   margin: 0 250px;
   padding-bottom: 3px;
   background-color: rgba(245, 245, 245, 0.685);
+  border-radius: 15px;
 }
 .FAQ p {
   padding-left: 10px;
@@ -231,10 +235,16 @@
   font-size: 20px;
   padding-bottom: .8em;
 }
-h1 {
+.FAQ h1 {
   text-align: center;
   font-size: 24px;
   padding: .3em;
+}
+
+.FAQ h4 {
+  text-align: center;
+  border-bottom: 2px solid rgba(34, 34, 34, 0.144);
+  padding-bottom: 3px;
 }
 
 .faqQuestions {
@@ -244,6 +254,7 @@ h1 {
   cursor:pointer;
   margin: 0.5em 0 0 1em;
   padding: 0.2em;
+  width: 50%;
 }
 
 /* Form display */
@@ -279,6 +290,15 @@ form{
   margin-left: 3em;
 }
 
+.FAQ a {
+  text-decoration: none;
+  color: black;
+}
+
+.FAQ p:hover {
+  background-color: rgba(34, 34, 34, 0.337);
+  border-radius: 15px;
+}
 
 /* Inside form elements */
 .closeFormBtn {
