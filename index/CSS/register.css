@@ -5,10 +5,9 @@
 }
 
 :root {
-  --main-background: #222222;
+  --main-background: #222222e8;
   --text: #ffffff;
   --input-background: #414a4a;
-  --button-background: #324b4a;
 }
 
 /* ! Main form */

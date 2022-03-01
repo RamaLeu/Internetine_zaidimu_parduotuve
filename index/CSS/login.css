@@ -5,8 +5,8 @@
 }
 
 :root {
-  --item-1-background: #222222be;
-  --item-2-background: #222222d5;
+  --item-1-background: #222222a4;
+  --item-2-background: #222222a4;
   --text: #ffffff;
   --input-background: #414a4a;
   --button-background: #2222;
@@ -43,7 +43,7 @@
   background-color: var(--input-background);
   border: none;
   border-radius: 15px;
-  padding: 1em;
+  padding: .2em;
 }
 
 .loginPage .main-input:hover {
